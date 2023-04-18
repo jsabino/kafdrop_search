@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Kafdrop Search",
+  "version": "1.0",
+  "description": "An extension to search for a given text in the kafka messages using the Kafdrop Api",
+  "permissions": [
+    "storage", "activeTab", "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
