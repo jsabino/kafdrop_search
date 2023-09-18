@@ -15,12 +15,15 @@ searchBtn.addEventListener('click', async function() {
     const numMessages = parseInt(numMessagesField.value)
     if (!topic) {
         alert('Invalid topic')
+        return
     }
     if (!searchTerm) {
         alert('Invalid search term')
+        return
     }
-    if (isNaN(numMessages) || numMessages < 1 || numMessages > 1000) {
-        alert('Invalid number of messages. Please choose a number between 1 and 1000.')
+    if (isNaN(numMessages) || numMessages < 1 || numMessages > 100000) {
+        alert('Invalid number of messages. Please choose a number between 1 and 10000.')
+        return
     }
 
     chrome.storage.sync.set({ state: { topic, searchTerm, numMessages } });
@@ -53,6 +56,7 @@ const searchScript = () => {
             messagesFound = {...messagesFound, ...messagesFoundInPartition}
         }
 
+        localStorage.setItem("messagesFound", JSON.stringify(messagesFound))
         console.log("Messages found:", messagesFound)
     }
 
